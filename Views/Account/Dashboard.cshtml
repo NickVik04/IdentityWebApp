@@ -1,0 +1,15 @@
+@using Microsoft.AspNetCore.Identity
+@model IdentityWebApp.ViewModels.LoginViewModel
+@inject SignInManager<IdentityUser> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+    <h2>Welcome to the Dashboard</h2>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+}
+
+else{
+    <h2>Sign in using the link below!</h2>
+    <a class="btn btn-secondary btn-lg" asp-contoller ="Account" asp-action="Login">Sign in</a>
+}
